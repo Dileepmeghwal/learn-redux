@@ -1,18 +1,32 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { LiaTrashSolid } from "react-icons/lia";
 import { CiEdit } from "react-icons/ci";
-import {
-  addTodo,
-  initializedTodos,
-  isDoneTodo,
-  removeTodo,
-  updateTodo,
-} from "../store/todoReducer";
-import Input from "./component/Input";
+// const { addTodo, initializedTodos, isDoneTodo, removeTodo, updateTodo } = lazy(
+//   () => import("../store/todoReducer")
+// );
+const addTodo = lazy(() => import("../store/todoReducer"));
+// const initializedTodos = lazy(() => import("../store/todoReducer"));
+const isDoneTodo = lazy(() => import("../store/todoReducer"));
+const removeTodo = lazy(() => import("../store/todoReducer"));
+const updateTodo = lazy(() => import("../store/todoReducer"));
+// import {
+//   addTodo,
+//   initializedTodos,
+//   isDoneTodo,
+//   removeTodo,
+//   updateTodo,
+// } from "../store/todoReducer";
+import { initializedTodos } from "../store/todoReducer";
+// import Input from "./component/Input";
+const Input = lazy(() => import("./component/Input"));
 import { IoSaveOutline } from "react-icons/io5";
+
+// dist/index.html                   0.46 kB │ gzip:  0.30 kB
+// dist/assets/index-CQ_HEf0k.css    1.71 kB │ gzip:  0.82 kB
+// dist/assets/index-NmjB_xR9.js   156.20 kB │ gzip: 51.13 kB
 
 function App() {
   const todo = useSelector((state) => state.todoReducer);

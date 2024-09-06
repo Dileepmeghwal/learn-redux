@@ -9,4 +9,4 @@ export const store = createStore(
 );
 
 
-console.log(store);
+// console.log(store);

@@ -70,6 +70,7 @@ export function todoReducer(state = [], action) {
       );
       saveTodoList(newTodo);
       return newTodo;
+
     case INITIALIZED_TODO:
       return action.payload;
 
